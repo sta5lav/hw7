@@ -14,9 +14,12 @@ public class Main {
         System.out.println("Задача 1");
         int cash = 0;
         int salary = 15_000;
-        while(cash < 2_459_000){
+        int upCash = 2_459_000;
+        int month = 1;
+        while(cash < upCash){
             cash = cash + salary;
-            System.out.println("Месяц " + cash/salary + ", сумма накоплений равна " + cash + " рублей" );
+            System.out.println("Месяц " + month + ", сумма накоплений равна " + cash + " рублей" );
+            month++;
         }
 
     }
@@ -34,16 +37,17 @@ public class Main {
             --i;
             System.out.print(i + " ");
         }
+        System.out.println();
     }
     public static void task3 () {
         System.out.println("Задача 3");
         int countryY = 12_000_000;
         int upPopulation = 17;
         int downPopulation = 8;
-        int diffPopulation = upPopulation * 12_000 - downPopulation * 12_000;
-        for (int i = 1; i < 11; i++){
+        int diffPopulation = upPopulation * (countryY/1000) - downPopulation * 12_000;
+        for (int year = 1; year < 11; year++){
             countryY = countryY + diffPopulation;
-            System.out.println("Год " + i + ", численность населения составляет " + countryY);
+            System.out.println("Год " + year + ", численность населения составляет " + countryY);
         }
 
     }
@@ -51,59 +55,65 @@ public class Main {
         System.out.println("Задача 4");
         int vklad = 15_000;
         int cash = 0;
-        int i = 1;
-        while (cash < 12_000_000) {
+        int month = 1;
+        int maxPredel = 12_000_000;
+        float kfc = 0.07f;
+        while (cash < maxPredel) {
             cash = cash + vklad;
-            cash = cash + (cash*7)/100;
-            System.out.println("Месяц: " + i + ". Сумма: " + cash);
-            i = i + 1;
+            cash = cash + (int)(cash*kfc);
+            System.out.println("Месяц: " + month + ". Сумма: " + cash);
+            month++;
         }
     }
     public static void task5 () {
         System.out.println("Задача 5");
         int vklad = 15_000;
         int cash = 0;
-        int i = 1;
-        while (cash < 12_000_000) {
+        int month = 1;
+        int maxPredel = 12_000_000;
+        while (cash < maxPredel) {
             cash = cash + vklad;
             cash = cash + (cash*7)/100;
-            if (i % 6 == 0) {
-                System.out.println("Месяц: " + i + ". Сумма: " + cash);
+            if (month % 6 == 0) {
+                System.out.println("Месяц: " + month + ". Сумма: " + cash);
             }
-            i += 1;
+            month += 1;
         }
     }
     public static void task6 () {
         System.out.println("Задача 6");
-        int i = 1;
+        int month = 1;
         int years = 9 * 12;
         int vklad = 15_000;
         int cash = 0;
-        while(i <= years){
+        float kfc = 0.07f;
+        while(month <= years){
             cash = cash + vklad;
-            cash = cash + (cash*7)/100;
-            if (i % 6 == 0) {
-                System.out.println("Месяц: " + i + ". Сумма: " + cash);
+            cash = cash + (int)(cash*kfc);
+            if (month % 6 == 0) {
+                System.out.println("Месяц: " + month + ". Сумма: " + cash);
             }
-            i += 1;
+            month += 1;
         }
     }
     public static void task7 () {
         System.out.println("Задача 7");
         int friday = 3;
         int month = 31;
-        for(int i = 0; i <= month; i++){
-            if((i - 3) % 7 == 0)
-                System.out.println("Сегодня пятница: " + i + " число");
+        for(int day = 0; day <= month; day++){
+            if(day % 7 == 3) {
+                System.out.println("Сегодня пятница: " + day + " число");
+            }
         }
     }
     public static void task8 () {
         System.out.println("Задача 8");
+        int currentYear = 2022;
         int flyPeriod = 79;
-        int startDate = 1822;
-        int finishDate = 2122;
+        int startDate = currentYear - 200;
+        int finishDate = currentYear + 100;
         int date = 0;
-        for (int i = 0; i < 2100; i += 79) {
+        for (int i = 0; i < finishDate; i += 79) {
             date = date + flyPeriod;
             if (date > startDate && date < finishDate) {
                 System.out.println(date);
